@@ -5,4 +5,17 @@ import { Component } from '@angular/core';
   templateUrl: 'app/app.component.html',
   styleUrls: ['app/app.component.css']
 })
-export class AppComponent { }
+export class AppComponent {
+
+  popUp=null;
+
+  onCallPreview(mediaItem){
+  
+  this.popUp=mediaItem;
+  }
+
+  onCallClose(mediaItem)
+  {
+    this.popUp=null;
+  }
+ }

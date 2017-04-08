@@ -1,0 +1,13 @@
+<div [hidden]="isVisible()" class="Hasil"  >
+  <div class="Tombol" (click)="onClose()">x</div>
+  <h2>{{ mediaItem ? mediaItem.name : ""}}</h2>
+  <div>Watched on {{ mediaItem ? mediaItem.watchedOn : ""}}</div>
+  <div>{{ mediaItem ? mediaItem.category: "" }}</div>
+  <div>{{ mediaItem ? mediaItem.year : "" }}</div>
+  <div class="Image" *ngFor="let cari of gambar"  >
+
+    <img *ngIf="cari.id==index" src={{cari.URL}} myImage>
+  </div>
+  <div class="NavigasiPrev" (click)="onPrev()">Prev</div>
+  <div class="NavigasiNext" (click)="onNext()">Next</div>
+</div>

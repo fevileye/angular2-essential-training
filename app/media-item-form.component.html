@@ -15,6 +15,9 @@
     <li>
       <label for="name">Name</label>
       <input type="text" name="name" id="name" formControlName="name">
+      <div *ngIf="form.controls.name.errors?.pattern" class="error">
+        Name has invalid character
+      </div>
     </li>
     <li>
       <label for="category">Category</label>
@@ -30,7 +33,29 @@
     <li>
       <label for="year">Year</label>
       <input type="text" name="year" id="year" maxlength="4" formControlName="year">
+      <div *ngIf="form.controls.year.errors?.year" class="error"> Year must be between {{form.controls.year.errors?.year.min}} and {{form.controls.year.errors?.year.max}}</div>
     </li>
+    <li>
+      <label for="movieId">Movie ID</label>
+      <input type="text" name="movieId" id="movieId" formControlName="movieId">
+      <div *ngIf="form.controls.movieId.errors?.pattern" class="error">Must be alphanumeric</div>
+    </li>
+    <li>
+      <label for="watchedOn">Watched On </label>
+      <input type="date" name="watchedOn" id="watchedOn" formControlName="watchedOn">
+    </li>
+    <li>
+      <label for="rating">Rating </label>
+       <select name="rating" id="rating" formControlName="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+    </li>
+
   </ul>
-  <button type="submit">Save</button>
+  <button type="submit" [disabled]="!form.valid">Save</button>
 </form>

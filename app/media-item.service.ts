@@ -16,7 +16,9 @@ export class MediaItemService {
   }
   
   add(mediaItem) {
-    this.mediaItems.push(mediaItem);
+    return this.http.post('mediaItems',mediaItem)
+    .map(response=>{});
+    //this.mediaItems.push(mediaItem);
   }
   
   delete(mediaItem) {
@@ -24,6 +26,8 @@ export class MediaItemService {
     if(index >= 0) {
       this.mediaItems.splice(index, 1);
     }
+    return this.http.delete(`mediaItems/${mediaItem.id}`)
+    .map(response=>{});
   }
 
   mediaItems = [
